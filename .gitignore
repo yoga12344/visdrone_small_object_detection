@@ -1,0 +1,29 @@
+# Python byte-code & caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Large model checkpoints (>100MB exceeds GitHub push limits)
+*.ckpt
+*.pth
+cv_hackathon/results/trained/faster_rcnn/weights/*.pt
+cv_hackathon/results/trained/mask_rcnn/weights/*.pt
+cv_hackathon/results/trained/rf_detr_nano/
+
+# Large ZIP archives (>100MB exceeds GitHub push limits)
+# Note: Uncompressed folders VISDRONE_ARTIFACTS_EXPORT/ and dataset/ are tracked directly
+VISDRONE_ARTIFACTS_EXPORT.zip
+dataset/visdrone_test.zip
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+desktop.ini

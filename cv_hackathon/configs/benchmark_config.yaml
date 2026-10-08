@@ -1,0 +1,62 @@
+# Benchmark Configuration
+# VisDrone2019 Object Detection Challenge
+# All models evaluated under identical conditions defined here.
+
+dataset:
+  name: VisDrone2019
+  iou_threshold: 0.50
+  confidence_threshold: 0.25
+  image_size: 640
+  small_object_max_side: 32   # pixels, width < 32 AND height < 32
+  medium_object_max_side: 96
+  # objects larger than 96px on longest side are 'large'
+
+classes:
+  # VisDrone 10 classes (0-indexed, class 0 = ignored region excluded)
+  names: [pedestrian, people, bicycle, car, van, truck, tricycle, awning-tricycle, bus, motor]
+  num_classes: 10
+
+coco_to_visdrone:
+  # COCO pretrained class id -> nearest VisDrone class id
+  # COCO: 0=person,1=bicycle,2=car,3=motorcycle,4=airplane,5=bus,6=train,7=truck,
+  #        8=boat,9=traffic light,10=fire hydrant,...
+  0: 0   # person -> pedestrian
+  1: 2   # bicycle -> bicycle
+  2: 3   # car -> car
+  3: 9   # motorcycle -> motor
+  5: 8   # bus -> bus
+  7: 5   # truck -> truck
+
+models:
+  yolov8s:
+    weights: yolov8s.pt
+    conf: 0.25
+    iou: 0.45
+    warmup_runs: 3
+    timing_runs: 5
+  faster_rcnn:
+    backbone: resnet50_fpn
+    conf: 0.50
+    warmup_runs: 2
+    timing_runs: 3
+  mask_rcnn:
+    backbone: resnet50_fpn
+    conf: 0.50
+    warmup_runs: 2
+    timing_runs: 3
+  rf_detr:
+    variant: nano
+    conf: 0.30
+    warmup_runs: 2
+    timing_runs: 3
+  yolo_sam:
+    yolo_weights: yolov8s.pt
+    sam_variant: vit_l
+    sam_weights: sam_vit_l_0b3195.pth
+    yolo_conf: 0.25
+    warmup_runs: 1
+    timing_runs: 2
+
+reproducibility:
+  random_seed: 42
+  deterministic: true
