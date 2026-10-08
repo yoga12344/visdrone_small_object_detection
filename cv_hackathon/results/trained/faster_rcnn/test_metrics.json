@@ -1,0 +1,32 @@
+{
+  "model": "Faster R-CNN (ResNet50+FPN)",
+  "training_status": "fine-tuned",
+  "best_epoch": 18,
+  "best_val_map50": 0.3325,
+  "test_images_count": 20,
+  "test_gt_objects_count": 1295,
+  "test_predictions_count": 1178,
+  "mAP50": 0.2749,
+  "precision": 0.5119,
+  "recall": 0.4656,
+  "f1": 0.4877,
+  "small_ap": 0.0365,
+  "medium_ap": 0.3064,
+  "large_ap": 0.402,
+  "mean_iou": 0.7701,
+  "latency_ms": 84.12,
+  "fps": 11.89,
+  "parameters": 41345286,
+  "model_size_mb": 158.21,
+  "per_class_ap": {
+    "pedestrian": 0.432719,
+    "people": 0.208593,
+    "bicycle": 0.157101,
+    "car": 0.838795,
+    "van": 0.368895,
+    "truck": 0.0,
+    "tricycle": 0.195408,
+    "awning-tricycle": 0.035088,
+    "motor": 0.237662
+  }
+}

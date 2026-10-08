@@ -1,0 +1,62 @@
+{
+  "YOLOv8s": {
+    "mAP50": 0.0587,
+    "Precision": 0.5636,
+    "Recall": 0.1481,
+    "F1": 0.2345,
+    "Small_mAP": 0.0005,
+    "MeanIoU": 0.8179,
+    "Time_ms": 107.09,
+    "FPS": 9.34,
+    "Params_M": 0.0,
+    "Size_MB": 21.54
+  },
+  "Faster R-CNN": {
+    "mAP50": 0.0888,
+    "Precision": 0.391,
+    "Recall": 0.2574,
+    "F1": 0.3104,
+    "Small_mAP": 0.0084,
+    "MeanIoU": 0.7792,
+    "Time_ms": 1963.0,
+    "FPS": 0.51,
+    "Params_M": 41.53,
+    "Size_MB": 0.0
+  },
+  "Mask R-CNN": {
+    "mAP50": 0.0887,
+    "Precision": 0.3952,
+    "Recall": 0.2506,
+    "F1": 0.3067,
+    "Small_mAP": 0.0089,
+    "MeanIoU": 0.7857,
+    "Time_ms": 4169.35,
+    "FPS": 0.24,
+    "Params_M": 44.18,
+    "Size_MB": 0.0
+  },
+  "RF-DETR Nano": {
+    "mAP50": 0.0,
+    "Precision": 0.0,
+    "Recall": 0.0,
+    "F1": 0.0,
+    "Small_mAP": 0.0,
+    "MeanIoU": 0.0,
+    "Time_ms": 0.09,
+    "FPS": 10555.39,
+    "Params_M": 0.0,
+    "Size_MB": 0.0
+  },
+  "YOLOv8 + SAM": {
+    "mAP50": 0.0587,
+    "Precision": 0.5636,
+    "Recall": 0.1481,
+    "F1": 0.2345,
+    "Small_mAP": 0.0005,
+    "MeanIoU": 0.8179,
+    "Time_ms": 119.97,
+    "FPS": 8.34,
+    "Params_M": 0.0,
+    "Size_MB": 0.0
+  }
+}

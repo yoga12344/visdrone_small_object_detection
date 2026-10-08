@@ -1,0 +1,31 @@
+{
+  "model": "YOLOv8s-Tiled (Optimized)",
+  "configuration": "2x2 Tiled Grid (overlap=0.20, conf=0.25, nms=0.45)",
+  "split": "test",
+  "num_test_images": 20,
+  "num_test_gt_targets": 1295,
+  "num_predictions": 1005,
+  "mAP50": 0.2307,
+  "precision": 0.5373,
+  "recall": 0.417,
+  "f1": 0.4696,
+  "small_ap": 0.0251,
+  "medium_ap": 0.2867,
+  "large_ap": 0.3006,
+  "mean_iou": 0.7832,
+  "latency_ms": 156.4,
+  "fps": 6.39,
+  "parameters": 11139470,
+  "model_size_mb": 21.46,
+  "per_class_ap": {
+    "pedestrian": 0.424893,
+    "people": 0.171275,
+    "bicycle": 0.038462,
+    "car": 0.800539,
+    "van": 0.282227,
+    "truck": 0.0,
+    "tricycle": 0.173469,
+    "awning-tricycle": 0.026316,
+    "motor": 0.15918
+  }
+}

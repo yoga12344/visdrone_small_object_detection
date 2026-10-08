@@ -1,0 +1,2 @@
+model,val_mAP50,precision,recall,f1,small_ap,medium_ap,large_ap,mean_iou,latency_ms,fps
+Selective_Two_Stage_Hybrid,0.2883,0.6139,0.5483,0.5792,0.1021,0.4132,0.1214,0.7799,111.26,8.99

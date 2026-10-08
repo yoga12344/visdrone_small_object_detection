@@ -1,0 +1,141 @@
+================================================================================
+ MODEL WEIGHTS MANIFEST (Locations & Sizes)
+ Note: Weights are recorded here per Task 4 to avoid huge duplicate archives.
+================================================================================
+
+Weight File : yolov8s.pt
+Size        : 21.54 MB (22,588,772 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\yolov8s.pt
+
+Weight File : yolo11n.pt
+Size        : 5.35 MB (5,613,764 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\yolo11n.pt
+
+Weight File : yolo26n.pt
+Size        : 5.29 MB (5,544,453 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\yolo26n.pt
+
+Weight File : yolov8m.pt
+Size        : 49.72 MB (52,136,884 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\yolov8m.pt
+
+Weight File : yolov8n.pt
+Size        : 6.25 MB (6,549,796 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\yolov8n.pt
+
+Weight File : yolov8s.pt
+Size        : 21.54 MB (22,588,772 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\yolov8s.pt
+
+Weight File : best.pt
+Size        : 5.20 MB (5,452,243 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\experiments\yolo_model_size\yolo11n\weights\best.pt
+
+Weight File : last.pt
+Size        : 5.20 MB (5,452,243 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\experiments\yolo_model_size\yolo11n\weights\last.pt
+
+Weight File : best.pt
+Size        : 49.61 MB (52,017,099 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\experiments\yolo_model_size\yolov8m\weights\best.pt
+
+Weight File : last.pt
+Size        : 49.61 MB (52,017,099 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\experiments\yolo_model_size\yolov8m\weights\last.pt
+
+Weight File : best.pt
+Size        : 5.94 MB (6,228,963 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\experiments\yolo_model_size\yolov8n\weights\best.pt
+
+Weight File : last.pt
+Size        : 5.94 MB (6,228,963 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\experiments\yolo_model_size\yolov8n\weights\last.pt
+
+Weight File : best.pt
+Size        : 21.46 MB (22,501,411 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\experiments\yolo_model_size\yolov8s\weights\best.pt
+
+Weight File : best.pt
+Size        : 5.94 MB (6,227,235 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\final_optimization\training\augmentation\baseline\weights\best.pt
+
+Weight File : last.pt
+Size        : 5.94 MB (6,227,235 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\final_optimization\training\augmentation\baseline\weights\last.pt
+
+Weight File : best.pt
+Size        : 5.94 MB (6,227,299 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\final_optimization\training\augmentation\combined_aerial\weights\best.pt
+
+Weight File : last.pt
+Size        : 5.94 MB (6,227,299 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\final_optimization\training\augmentation\combined_aerial\weights\last.pt
+
+Weight File : best.pt
+Size        : 5.94 MB (6,227,235 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\final_optimization\training\augmentation\geometric\weights\best.pt
+
+Weight File : last.pt
+Size        : 5.94 MB (6,227,235 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\final_optimization\training\augmentation\geometric\weights\last.pt
+
+Weight File : best.pt
+Size        : 5.94 MB (6,227,235 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\final_optimization\training\augmentation\photometric\weights\best.pt
+
+Weight File : last.pt
+Size        : 5.94 MB (6,227,235 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\final_optimization\training\augmentation\photometric\weights\last.pt
+
+Weight File : best.pt
+Size        : 5.94 MB (6,227,299 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\final_optimization\training\augmentation\spatial_preserve\weights\best.pt
+
+Weight File : last.pt
+Size        : 5.94 MB (6,227,299 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\final_optimization\training\augmentation\spatial_preserve\weights\last.pt
+
+Weight File : best.pt
+Size        : 21.47 MB (22,514,403 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\final_optimization\training\yolov8s_100ep_640\weights\best.pt
+
+Weight File : last.pt
+Size        : 21.47 MB (22,514,403 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\final_optimization\training\yolov8s_100ep_640\weights\last.pt
+
+Weight File : best.pt
+Size        : 21.46 MB (22,505,763 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\full_visdrone_training\yolov8s_full_6471imgs\weights\best.pt
+
+Weight File : last.pt
+Size        : 21.46 MB (22,505,763 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\full_visdrone_training\yolov8s_full_6471imgs\weights\last.pt
+
+Weight File : best.pt
+Size        : 158.21 MB (165,892,131 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\trained\faster_rcnn\weights\best.pt
+
+Weight File : last.pt
+Size        : 158.21 MB (165,892,131 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\trained\faster_rcnn\weights\last.pt
+
+Weight File : best.pt
+Size        : 168.23 MB (176,398,375 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\trained\mask_rcnn\weights\best.pt
+
+Weight File : last.pt
+Size        : 168.23 MB (176,398,375 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\trained\mask_rcnn\weights\last.pt
+
+Weight File : best.pt
+Size        : 21.46 MB (22,501,411 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\trained\yolov8s\weights\best.pt
+
+Weight File : last.pt
+Size        : 21.46 MB (22,501,411 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\cv_hackathon\results\trained\yolov8s\weights\last.pt
+
+Weight File : best.pt
+Size        : 21.46 MB (22,505,763 bytes)
+Location    : C:\Users\yogac\Downloads\cv_hackthon-main\cv_hackthon-main\full_code_submission\weights\best.pt
+

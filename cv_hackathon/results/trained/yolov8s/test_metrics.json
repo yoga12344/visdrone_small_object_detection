@@ -1,0 +1,32 @@
+{
+  "model": "YOLOv8s",
+  "checkpoint": "C:\\Users\\yogac\\Downloads\\cv_hackthon-main\\cv_hackthon-main\\cv_hackathon\\results\\trained\\yolov8s\\weights\\best.pt",
+  "dataset": "VisDrone2019-DET",
+  "split": "test",
+  "test_images_count": 20,
+  "test_gt_objects_count": 1295,
+  "test_predictions_count": 548,
+  "mAP50": 0.1322,
+  "precision": 0.5803,
+  "recall": 0.2456,
+  "f1": 0.3451,
+  "small_ap": 0.0028,
+  "medium_ap": 0.1699,
+  "large_ap": 0.3917,
+  "mean_iou": 0.7831,
+  "latency_ms": 19.53,
+  "fps": 51.2,
+  "parameters": 11139470,
+  "model_size_mb": 21.46,
+  "per_class_ap": {
+    "pedestrian": 0.219981,
+    "people": 0.069581,
+    "bicycle": 0.038462,
+    "car": 0.658971,
+    "van": 0.113095,
+    "truck": 0.0,
+    "tricycle": 0.038095,
+    "awning-tricycle": 0.0,
+    "motor": 0.051881
+  }
+}

@@ -1,0 +1,5 @@
+model,training_status,mAP50,precision,recall,f1,small_ap,medium_ap,large_ap,mean_iou,latency_ms,fps,parameters,model_size_mb
+YOLOv8s,fine-tuned,0.1322,0.5803,0.2456,0.3451,0.0028,0.1699,0.3917,0.7831,19.53,51.20,11139470,21.46
+Faster R-CNN,fine-tuned,0.2749,0.5119,0.4656,0.4877,0.0365,0.3064,0.4020,0.7701,84.12,11.89,41345286,158.21
+Mask R-CNN,fine-tuned,0.2587,0.5216,0.4672,0.4929,0.0401,0.3134,0.3938,0.7606,1141.14,0.88,43970833,168.23
+RF-DETR Nano,fine-tuned,0.1995,0.3981,0.3653,0.3810,0.0063,0.2578,0.4906,0.7298,42.60,23.47,30467298,115.42

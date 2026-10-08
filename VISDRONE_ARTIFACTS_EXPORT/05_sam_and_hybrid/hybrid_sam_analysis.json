@@ -1,0 +1,57 @@
+[
+  {
+    "scene_index": 1,
+    "scene_name": "Dense_Pedestrian_Scene",
+    "image_id": "0000001_07999_d_0000012",
+    "yolo_detections": 22,
+    "sam_masks": 22,
+    "yolo_latency_ms": 1242.35,
+    "sam_latency_ms": 1554.97,
+    "total_latency_ms": 2797.32,
+    "resolution": "1920x1080"
+  },
+  {
+    "scene_index": 2,
+    "scene_name": "Tiny_Object_Heavy_Scene",
+    "image_id": "0000001_08414_d_0000013",
+    "yolo_detections": 43,
+    "sam_masks": 43,
+    "yolo_latency_ms": 41.1,
+    "sam_latency_ms": 1789.11,
+    "total_latency_ms": 1830.22,
+    "resolution": "1920x1080"
+  },
+  {
+    "scene_index": 3,
+    "scene_name": "Vehicle_Heavy_Scene",
+    "image_id": "0000001_05249_d_0000009",
+    "yolo_detections": 86,
+    "sam_masks": 86,
+    "yolo_latency_ms": 43.54,
+    "sam_latency_ms": 3495.46,
+    "total_latency_ms": 3539.0,
+    "resolution": "1920x1080"
+  },
+  {
+    "scene_index": 4,
+    "scene_name": "Occluded_Crowded_Scene",
+    "image_id": "0000001_02999_d_0000005",
+    "yolo_detections": 21,
+    "sam_masks": 21,
+    "yolo_latency_ms": 42.4,
+    "sam_latency_ms": 1290.4,
+    "total_latency_ms": 1332.81,
+    "resolution": "1920x1080"
+  },
+  {
+    "scene_index": 5,
+    "scene_name": "Difficult_Aerial_Scene",
+    "image_id": "0000021_00000_d_0000001",
+    "yolo_detections": 8,
+    "sam_masks": 8,
+    "yolo_latency_ms": 27.24,
+    "sam_latency_ms": 494.19,
+    "total_latency_ms": 521.43,
+    "resolution": "960x540"
+  }
+]

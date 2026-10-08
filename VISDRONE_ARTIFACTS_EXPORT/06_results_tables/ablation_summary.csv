@@ -1,0 +1,23 @@
+Experiment,Configuration,mAP,Small_AP,Recall,F1,Latency,FPS,Conclusion
+1. Model Size,YOLOv8n (3.0M params),0.128,0.019,0.285,0.382,16.0,62.5,"Extremely fast, but lowest small object capacity."
+1. Model Size,YOLO11n (2.6M params),0.1375,0.0215,0.298,0.401,15.38,65.0,Highest edge efficiency; superior architectural design over v8n.
+1. Model Size,YOLOv8s (11.1M params),0.148,0.0244,0.3301,0.4478,25.37,39.42,"Optimal balance of accuracy, parameter scale, and real-time FPS."
+1. Model Size,YOLOv8m (25.9M params),0.161,0.0285,0.354,0.468,43.86,22.8,"Higher AP, but falls below 30 FPS real-time drone threshold."
+2. Input Resolution,640x640 px,0.148,0.0244,0.3301,0.4478,25.37,39.42,Standard baseline; severe downsampling losses on sub-32px targets.
+2. Input Resolution,768x768 px,0.1695,0.0381,0.362,0.472,35.54,28.14,+56% gain in Small AP with minor throughput reduction.
+2. Input Resolution,1024x1024 px,0.1982,0.0526,0.401,0.5015,61.73,16.2,"+115% gain in Small AP, but drops below 20 FPS."
+3. Augmentation,Baseline (Default Mosaic),0.125,0.018,0.285,0.378,25.37,39.42,Excessive mosaic cutting chops tiny targets at sub-tile seams.
+3. Augmentation,Set A (Geometric),0.134,0.021,0.301,0.402,25.37,39.42,Rotation and scale jitter improve view-angle invariance.
+3. Augmentation,Set B (Photometric),0.131,0.0195,0.292,0.395,25.37,39.42,Color/HSV jitter improves illumination robustness.
+3. Augmentation,Set C (Blur/Noise),0.1365,0.0235,0.312,0.418,25.37,39.42,Mild blur forces learning higher-level semantic silhouettes.
+3. Augmentation,Set D (Combined Balanced),0.142,0.0255,0.328,0.435,25.37,39.42,Highest overall validation mAP and recall among augmentation sets.
+4. Small-Object Strategy,Standard 640px Inference,0.148,0.0244,0.3301,0.4478,25.37,39.42,"Fast, but misses 85% of tiny pedestrians."
+4. Small-Object Strategy,Tiled 2x2 Grid (overlap 0.20),0.2185,0.0312,0.385,0.4502,38.8,25.77,Spatial preservation recovers dense clusters; best real-time trade-off.
+4. Small-Object Strategy,Tiled 3x2 Grid (overlap 0.25),0.231,0.0355,0.412,0.463,58.2,17.18,Approaches Faster R-CNN accuracy at 17.2 FPS.
+5. Confidence Threshold,conf = 0.20,0.148,0.0244,0.372,0.415,25.37,39.42,High recall but elevates background false positives.
+5. Confidence Threshold,conf = 0.25 (Optimal),0.148,0.0244,0.3301,0.4478,25.37,39.42,Peak F1 score operating point; frozen for benchmark.
+5. Confidence Threshold,conf = 0.30,0.148,0.0244,0.298,0.439,25.37,39.42,Precision increases to 74% at the cost of dropped targets.
+5. Confidence Threshold,conf = 0.40,0.148,0.0244,0.241,0.398,25.37,39.42,Excessive target dropout; unsuitable for safety-critical drone tasks.
+5. Confidence Threshold,conf = 0.50,0.148,0.0244,0.185,0.334,25.37,39.42,Severely under-reports pedestrians and cyclists.
+6. Hybrid Pipelines,YOLOv8s + SAM (ViT-B),0.148,0.0244,0.3301,0.4478,482.0,2.07,Adds rich polygon instance segmentation; latency limited by SAM.
+6. Hybrid Pipelines,Selective 2-Stage (YOLO + FRCNN),0.224,0.0345,0.395,0.468,42.1,23.75,Combines YOLO speed with selective Faster R-CNN patch refinement.

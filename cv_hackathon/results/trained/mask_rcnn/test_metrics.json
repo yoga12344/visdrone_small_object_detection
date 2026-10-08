@@ -1,0 +1,32 @@
+{
+  "model": "Mask R-CNN (ResNet50+FPN)",
+  "training_status": "fine-tuned",
+  "best_epoch": 15,
+  "best_val_map50": 0.3342,
+  "test_images_count": 20,
+  "test_gt_objects_count": 1295,
+  "test_predictions_count": 1160,
+  "mAP50": 0.2587,
+  "precision": 0.5216,
+  "recall": 0.4672,
+  "f1": 0.4929,
+  "small_ap": 0.0401,
+  "medium_ap": 0.3134,
+  "large_ap": 0.3938,
+  "mean_iou": 0.7606,
+  "latency_ms": 1141.14,
+  "fps": 0.88,
+  "parameters": 43970833,
+  "model_size_mb": 168.23,
+  "per_class_ap": {
+    "pedestrian": 0.478028,
+    "people": 0.200265,
+    "bicycle": 0.155819,
+    "car": 0.834408,
+    "van": 0.28254,
+    "truck": 0.0,
+    "tricycle": 0.125337,
+    "awning-tricycle": 0.023684,
+    "motor": 0.228091
+  }
+}

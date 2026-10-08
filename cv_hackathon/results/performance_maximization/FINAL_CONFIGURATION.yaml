@@ -1,0 +1,83 @@
+# FINAL_CONFIGURATION.yaml
+# Phase P: Frozen Research Configuration for VisDrone2019-DET Benchmark
+# Every parameter required to reproduce the optimized detector is frozen here.
+
+benchmark:
+  project: "Comparative Analysis of Advanced Object Detection for Aerial Imagery"
+  dataset: "VisDrone2019-DET"
+  authoritative_split:
+    train_images: 422
+    val_images: 106
+    test_images: 20
+    test_manifest: "data/processed/splits/test_ids.txt"
+
+hardware_environment:
+  gpu: "NVIDIA GeForce RTX 4060 Laptop GPU"
+  vram_gb: 8.59
+  cuda_version: "12.1"
+  torch_version: "2.3.0+cu121"
+  dataloader_workers: 0
+
+classes:
+  count: 10
+  names:
+    0: "pedestrian"
+    1: "people"
+    2: "bicycle"
+    3: "car"
+    4: "van"
+    5: "truck"
+    6: "tricycle"
+    7: "awning-tricycle"
+    8: "bus"
+    9: "motor"
+
+frozen_models:
+  primary_detector:
+    architecture: "YOLOv8s"
+    parameters: 11139470
+    weights_path: "results/final_optimization/training/yolov8s_100ep_640/weights/best.pt"
+    epochs_trained: 100
+    patience: 25
+    optimizer: "auto"
+    seed: 42
+    amp: true
+
+  two_stage_refiner:
+    architecture: "Faster R-CNN (ResNet-50-FPN)"
+    parameters: 41355094
+    weights_path: "results/trained/faster_rcnn/weights/best.pt"
+
+optimal_postprocessing:
+  confidence_threshold: 0.20
+  nms_iou_threshold: 0.50
+
+winning_deployments:
+  best_accuracy_small_object:
+    strategy: "Tiled 3x2 Grid"
+    tile_grid: [3, 2]
+    overlap: 0.20
+    inference_imgsz: 640
+    conf: 0.20
+    iou_nms: 0.50
+    val_mAP50: 0.3560
+    val_small_ap: 0.1396
+
+  best_practical_tiling:
+    strategy: "Tiled 2x2 Grid"
+    tile_grid: [2, 2]
+    overlap: 0.20
+    inference_imgsz: 640
+    conf: 0.20
+    iou_nms: 0.50
+    val_mAP50: 0.3473
+    val_small_ap: 0.1165
+
+  best_realtime_deployment:
+    strategy: "Native High-Resolution"
+    inference_imgsz: 1024
+    conf: 0.20
+    iou_nms: 0.50
+    val_mAP50: 0.3159
+    val_small_ap: 0.1075
+    fps: 54.59

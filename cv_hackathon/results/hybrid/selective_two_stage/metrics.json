@@ -1,0 +1,14 @@
+{
+  "Architecture": "Selective_Two_Stage_Hybrid (YOLOv8s + FRCNN)",
+  "mAP@0.5": 0.267,
+  "Precision": 0.6127,
+  "Recall": 0.5157,
+  "F1": 0.56,
+  "Small_AP": 0.094,
+  "Medium_AP": 0.3955,
+  "Large_AP": 0.1557,
+  "Mean_IoU": 0.7833,
+  "Latency_ms": 187.75,
+  "FPS": 5.33,
+  "Num_Detections": 6763
+}
