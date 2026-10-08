@@ -1,0 +1,923 @@
+<USER_REQUEST>
+You are now performing the FINAL RESEARCH OPTIMIZATION AND ABLATION PHASE
+of my existing Computer Vision Hackathon project.
+
+PROJECT:
+cv_hackathon/
+
+IMPORTANT:
+Do NOT rebuild the project.
+Do NOT delete existing results.
+Do NOT change the authoritative dataset split.
+Do NOT fabricate metrics.
+Do NOT use test data for training, tuning, augmentation selection, or
+checkpoint selection.
+
+The goal is NOT simply to obtain larger numbers.
+
+The goal is to determine:
+
+1. How to improve small-object detection on VisDrone.
+2. Which YOLO model/version/size is most suitable.
+3. Whether higher input resolution improves small-object detection.
+4. Which augmentation strategy works best for aerial imagery.
+5. Which architecture provides the best accuracy/speed trade-off.
+6. Whether a hybrid pipeline can solve weaknesses of individual models.
+7. Produce scientifically defensible evidence for the final report.
+
+============================================================
+CURRENT BASELINE — DO NOT OVERWRITE
+============================================================
+
+Existing completed benchmark:
+
+YOLOv8s:
+mAP@0.5 = 0.1322
+Precision = 0.5803
+Recall = 0.2456
+F1 = 0.3451
+Small AP = 0.0028
+Medium AP = 0.1699
+Large AP = 0.3917
+Mean IoU = 0.7831
+Latency = 19.53 ms
+FPS = 51.20
+Parameters = 11,139,470
+Size = 21.46 MB
+
+Faster R-CNN:
+mAP@0.5 = 0.2749
+Precision = 0.5119
+Recall = 0.4656
+F1 = 0.4877
+Small AP = 0.0365
+Medium AP = 0.3064
+Large AP = 0.4020
+Mean IoU = 0.7701
+Latency = 84.12 ms
+FPS = 11.89
+
+Mask R-CNN:
+mAP@0.5 = 0.2587
+Precision = 0.5216
+Recall = 0.4672
+F1 = 0.4929
+Small AP = 0.0401
+Medium AP = 0.3134
+Large AP = 0.3938
+Mean IoU = 0.7606
+Latency = 1141.14 ms
+FPS = 0.88
+
+RF-DETR Nano:
+mAP@0.5 = 0.1995
+Precision = 0.3981
+Recall = 0.3653
+F1 = 0.3810
+Small AP = 0.0063
+Medium AP = 0.2578
+Large AP = 0.4906
+Mean IoU = 0.7298
+Latency = 42.60 ms
+FPS = 23.47
+
+These are the baseline results.
+
+DO NOT overwrite them.
+
+============================================================
+DATASET — LOCKED
+============================================================
+
+Use:
+
+cv_hackathon/data/processed/
+
+Current authoritative split:
+
+Train = 422 images
+Validation = 106 images
+Test = 20 images
+
+Locked test IDs:
+
+cv_hackathon/data/processed/splits/test_ids.txt
+
+Test set contains:
+
+20 images
+1,295 valid foreground objects
+
+The test set MUST NEVER be used for:
+
+- training
+- augmentation selection
+- hyperparameter tuning
+- image-size selection
+- checkpoint selection
+- threshold optimization
+
+The validation set is the ONLY set allowed for model selection.
+
+Final test should be run only after all decisions are frozen.
+
+============================================================
+MAIN RESEARCH PROBLEM
+============================================================
+
+The current results reveal a major problem:
+
+YOLOv8s is extremely fast but weak on tiny aerial objects.
+
+Current Small AP:
+
+YOLOv8s = 0.0028
+Faster R-CNN = 0.0365
+Mask R-CNN = 0.0401
+RF-DETR = 0.0063
+
+Therefore the optimization phase must specifically target:
+
+SMALL OBJECT DETECTION.
+
+Do NOT optimize only overall mAP.
+
+Every experiment must report:
+
+mAP@0.5
+Precision
+Recall
+F1
+Small AP
+Medium AP
+Large AP
+Mean IoU
+Latency
+FPS
+Parameters
+Model size
+
+============================================================
+EXPERIMENT 1 — YOLO MODEL SIZE COMPARISON
+============================================================
+
+Train/evaluate a controlled YOLO comparison.
+
+Start with:
+
+YOLOv8n
+YOLOv8s
+YOLOv8m
+
+If the installed Ultralytics version supports the architecture cleanly,
+optionally evaluate:
+
+YOLO11n
+YOLO11s
+
+DO NOT add many models unnecessarily.
+
+The purpose is to determine:
+
+Does increasing model capacity improve small-object detection enough
+to justify the increase in computational cost?
+
+Use:
+
+same dataset
+same train/validation/test split
+same seed
+same evaluation code
+same IoU threshold
+same object-scale definitions
+
+Recommended initial configuration:
+
+epochs = 50
+image size = 640
+batch size chosen automatically according to 8 GB VRAM
+device = cuda:0
+seed = 42
+
+Use pretrained weights.
+
+Select the best checkpoint ONLY from validation performance.
+
+Do NOT select using test results.
+
+Save each experiment separately:
+
+results/experiments/yolo_model_size/yolov8n/
+results/experiments/yolo_model_size/yolov8s/
+results/experiments/yolo_model_size/yolov8m/
+
+If YOLO11 is tested:
+
+results/experiments/yolo_model_size/yolo11n/
+results/experiments/yolo_model_size/yolo11s/
+
+============================================================
+EXPERIMENT 2 — INPUT RESOLUTION ABLATION
+============================================================
+
+This is one of the most important experiments.
+
+Use the BEST YOLO configuration from Experiment 1.
+
+Compare:
+
+640x640
+768x768
+1024x1024
+
+Do NOT change anything else.
+
+Same:
+
+model
+dataset
+augmentation
+seed
+epochs
+evaluation
+
+Only image resolution changes.
+
+Purpose:
+
+Determine whether higher resolution improves detection of tiny
+pedestrians, bicycles, motorcycles, etc.
+
+Report:
+
+mAP
+Small AP
+Medium AP
+Large AP
+latency
+FPS
+VRAM usage
+
+Expected research question:
+
+"Does higher spatial resolution improve small-object detection enough
+to justify increased computational cost?"
+
+Do NOT assume the answer.
+
+Measure it.
+
+Save:
+
+results/experiments/resolution/640/
+results/experiments/resolution/768/
+results/experiments/resolution/1024/
+
+============================================================
+EXPERIMENT 3 — AERIAL-SPECIFIC AUGMENTATION ABLATION
+============================================================
+
+Do NOT blindly add every augmentation.
+
+Test controlled augmentation strategies.
+
+BASELINE:
+
+existing augmentation configuration
+
+AUGMENTATION SET A — GEOMETRIC:
+
+horizontal flip
+small rotation
+scale variation
+
+AUGMENTATION SET B — PHOTOMETRIC:
+
+brightness
+contrast
+HSV/color variation
+
+AUGMENTATION SET C — BLUR/NOISE:
+
+mild blur
+mild noise
+
+AUGMENTATION SET D — COMBINED:
+
+geometric + photometric + mild blur
+
+IMPORTANT:
+
+Avoid aggressive crops that destroy tiny objects.
+
+Avoid extreme rotations.
+
+Avoid transformations that create unrealistic aerial scenes.
+
+The goal is realistic augmentation, not maximum augmentation.
+
+For every augmentation experiment record:
+
+mAP
+Small AP
+Medium AP
+Large AP
+Recall
+F1
+
+Use validation results to determine the best augmentation strategy.
+
+Then freeze the winning strategy.
+
+Save:
+
+results/experiments/augmentation/baseline/
+results/experiments/augmentation/geometric/
+results/experiments/augmentation/photometric/
+results/experiments/augmentation/blur_noise/
+results/experiments/augmentation/combined/
+
+============================================================
+EXPERIMENT 4 — SMALL-OBJECT TRAINING STRATEGY
+============================================================
+
+Investigate whether small-object performance can be improved without
+changing the model architecture.
+
+Evaluate at least one of the following if technically reliable:
+
+1. Higher image resolution
+2. Multi-scale training
+3. Tiled inference
+4. Object-aware cropping
+
+Do NOT use test images to tune the tile size.
+
+Use the validation set.
+
+The final experiment must clearly explain:
+
+Problem:
+Tiny objects become extremely small after resizing.
+
+Solution:
+Preserve more spatial information using high-resolution or tiled
+processing.
+
+Measure:
+
+Small AP
+overall mAP
+latency
+FPS
+
+============================================================
+EXPERIMENT 5 — THRESHOLD ANALYSIS
+============================================================
+
+Do NOT change confidence thresholds to artificially inflate results.
+
+Instead, perform a validation-only threshold analysis.
+
+Test confidence thresholds such as:
+
+0.20
+0.25
+0.30
+0.40
+0.50
+
+Measure:
+
+Precision
+Recall
+F1
+
+Determine the operating point that provides the best F1 or an explicitly
+defined deployment objective.
+
+Then FREEZE the chosen threshold.
+
+Do NOT optimize the threshold on the 20-image test set.
+
+Use the frozen threshold for final test evaluation.
+
+Document this clearly.
+
+============================================================
+EXPERIMENT 6 — SAME IMAGE QUALITATIVE COMPARISON
+============================================================
+
+This is mandatory.
+
+Select representative images ONLY from the locked test set after
+the benchmark protocol has been fixed.
+
+Use the SAME images for every model.
+
+Select approximately:
+
+5 representative test images.
+
+Categories should include where available:
+
+1. Dense pedestrian scene
+2. Tiny-object-heavy scene
+3. Vehicle-heavy scene
+4. Occluded/crowded scene
+5. Difficult aerial scene
+
+For each image create:
+
+Ground Truth
+YOLOv8
+Faster R-CNN
+Mask R-CNN
+RF-DETR
+
+Use identical visualization scale.
+
+Create comparison panels:
+
+results/comparison/same_image_analysis/
+
+Example:
+
+image_01_comparison.png
+image_02_comparison.png
+...
+
+Also create zoomed crops of tiny-object regions.
+
+Example:
+
+image_01_small_objects_zoom.png
+
+The goal is to visually demonstrate:
+
+- missed objects
+- false positives
+- localization quality
+- crowded scenes
+- tiny-object detection
+- class confusion
+- duplicate detections
+
+============================================================
+EXPERIMENT 7 — FAILURE ANALYSIS
+============================================================
+
+For each model identify representative failure cases.
+
+Create categories:
+
+A. Small objects missed
+B. False positives
+C. Occlusion
+D. Dense object clusters
+E. Large-object localization errors
+F. Class confusion
+
+Create a table:
+
+Model
+Failure Type
+Example Image
+Observed Problem
+Likely Cause
+Potential Solution
+
+DO NOT simply say:
+
+"YOLO performs poorly."
+
+Explain WHY.
+
+============================================================
+EXPERIMENT 8 — HYBRID SOLUTION A
+============================================================
+
+Build a qualitative/prototype hybrid:
+
+YOLOv8s
+    ↓
+Object detection
+    ↓
+Bounding boxes
+    ↓
+SAM
+    ↓
+Instance masks
+
+Use the existing YOLOv8s detector.
+
+Use SAM for segmentation refinement.
+
+Do NOT claim quantitative segmentation accuracy because the current
+VisDrone-DET annotations are bounding boxes, not ground-truth instance
+masks.
+
+Generate qualitative examples.
+
+For identical images show:
+
+Original
+YOLO boxes
+YOLO + SAM masks
+
+Save:
+
+results/hybrid/yolov8_sam/
+
+Explain:
+
+YOLO provides fast object localization.
+SAM provides pixel-level segmentation.
+
+============================================================
+EXPERIMENT 9 — HYBRID SOLUTION B
+============================================================
+
+Prototype a selective two-stage solution for small objects.
+
+Concept:
+
+Full image
+   ↓
+Fast YOLOv8s
+   ↓
+Identify uncertain / dense / small-object regions
+   ↓
+High-resolution crop or tile
+   ↓
+Faster R-CNN OR Mask R-CNN
+   ↓
+Merge detections
+   ↓
+Final output
+
+IMPORTANT:
+
+Do NOT automatically claim this improves mAP.
+
+First implement a validation-only prototype.
+
+Compare:
+
+YOLOv8s baseline
+versus
+YOLOv8s + second-stage refinement
+
+Measure:
+
+mAP
+Small AP
+Recall
+F1
+Latency
+
+The objective is:
+
+"Can a selective high-accuracy second stage recover small objects
+while retaining much of YOLO's speed?"
+
+If it does not improve results, report that honestly.
+
+============================================================
+EXPERIMENT 10 — FINAL OPTIMIZED MODEL
+============================================================
+
+After all validation experiments are completed:
+
+Choose the best configuration based on a clearly defined objective.
+
+For example:
+
+PRIMARY:
+mAP@0.5
+
+SECONDARY:
+Small AP
+
+CONSTRAINT:
+reasonable inference speed
+
+Do NOT choose a model based only on one metric.
+
+Document why the final configuration was selected.
+
+Only AFTER all decisions are frozen:
+
+Run ONE final evaluation on the locked 20-image test set.
+
+This is the only point at which the test set should be used for the
+optimization experiments.
+
+============================================================
+FINAL MODEL COMPARISON
+============================================================
+
+Create:
+
+results/final_research_comparison.csv
+
+Include:
+
+Model
+Version
+Input Resolution
+Augmentation
+Params
+Size_MB
+mAP@0.5
+Precision
+Recall
+F1
+Small_AP
+Medium_AP
+Large_AP
+Mean_IoU
+Latency_ms
+FPS
+VRAM_MB
+Training_Epochs
+Checkpoint
+Notes
+
+Include:
+
+YOLOv8n
+YOLOv8s
+YOLOv8m
+
+plus the existing:
+
+Faster R-CNN
+Mask R-CNN
+RF-DETR Nano
+
+and the final optimized YOLO configuration.
+
+============================================================
+FINAL ABLATION TABLE
+============================================================
+
+Create:
+
+results/ablation_summary.csv
+
+Include:
+
+Experiment
+Configuration
+mAP
+Small_AP
+Recall
+F1
+Latency
+FPS
+Conclusion
+
+Experiments:
+
+YOLO model size
+Input resolution
+Augmentation
+Threshold
+Small-object strategy
+Hybrid pipeline
+
+============================================================
+VISUAL REPORT ARTIFACTS
+============================================================
+
+Generate publication-quality visualizations.
+
+Create:
+
+results/report_figures/
+
+Required figures:
+
+1. mAP comparison bar chart
+2. Small AP comparison
+3. Medium AP comparison
+4. Large AP comparison
+5. FPS comparison
+6. Latency comparison
+7. Model size comparison
+8. Parameters comparison
+9. Accuracy vs FPS scatter plot
+10. Accuracy vs model size scatter plot
+11. Small AP vs latency scatter plot
+12. Resolution vs Small AP
+13. Resolution vs FPS
+14. Augmentation comparison
+15. YOLO model-size comparison
+16. Same-image qualitative comparison panels
+17. Failure-analysis panels
+18. YOLO + SAM qualitative panels
+19. Hybrid pipeline diagram
+
+Do not use misleading 3D charts.
+
+Use consistent axes.
+
+Clearly label every chart.
+
+============================================================
+FINAL PROBLEM → EVIDENCE → SOLUTION TABLE
+============================================================
+
+Create:
+
+results/problem_solution_matrix.csv
+
+Example structure:
+
+Problem:
+Tiny objects missed after resizing.
+
+Evidence:
+Low Small AP.
+
+Affected Model:
+YOLOv8s.
+
+Proposed Solution:
+Higher-resolution inference / tiling.
+
+Test:
+640 vs 1024.
+
+Result:
+Measured validation improvement.
+
+Deployment Impact:
+Higher latency.
+
+Repeat for:
+
+Small objects
+Dense scenes
+Occlusion
+False positives
+Segmentation requirement
+Real-time requirement
+
+============================================================
+FINAL REPORT
+============================================================
+
+Create:
+
+results/FINAL_RESEARCH_REPORT_DATA.md
+
+Structure:
+
+1. Research Problem
+2. Dataset
+3. Dataset Preprocessing
+4. Data Split
+5. Object Scale Distribution
+6. Model Architectures
+7. Training Configuration
+8. Baseline Results
+9. YOLO Version Comparison
+10. Resolution Ablation
+11. Augmentation Ablation
+12. Small Object Analysis
+13. Inference Speed Analysis
+14. Qualitative Comparison
+15. Failure Analysis
+16. YOLO + SAM Hybrid
+17. Selective Two-Stage Hybrid
+18. Final Optimized Configuration
+19. Accuracy-Speed Tradeoff
+20. Roboflow Comparison
+21. Deployment Recommendation
+22. Limitations
+23. Conclusion
+
+============================================================
+SCIENTIFIC RULES
+============================================================
+
+NEVER:
+
+- train on test data
+- tune on test data
+- select checkpoint using test results
+- use pseudo-ground-truth
+- fabricate improvements
+- report an invalid runtime
+- manipulate confidence thresholds to inflate test metrics
+- cherry-pick a single image as proof of superiority
+- claim segmentation accuracy without mask GT
+- compare CPU and GPU timing as if equivalent
+- claim a model is universally best
+
+If an experiment produces worse results:
+
+KEEP IT.
+
+A negative result is valuable for the research.
+
+For example:
+
+"1024px improved Small AP but reduced FPS substantially."
+
+That is a valid finding.
+
+============================================================
+SUCCESS CRITERIA
+============================================================
+
+The final work should allow us to answer:
+
+1. Which architecture detects small objects best?
+2. Which model gives the highest overall detection accuracy?
+3. Which model is fastest?
+4. Which YOLO model size provides the best accuracy/speed tradeoff?
+5. Does higher resolution improve small-object detection?
+6. Which augmentation strategy works best?
+7. What are the major failure cases?
+8. Can YOLO + SAM improve the usefulness of detections?
+9. Can a selective two-stage model improve small-object recall?
+10. Which model should be deployed for:
+    - real-time drone operation?
+    - high-accuracy offline analysis?
+    - segmentation?
+    - transformer-based deployment?
+11. What hybrid architecture provides the best practical solution?
+
+============================================================
+COMPUTATIONAL CONSTRAINTS
+============================================================
+
+Hardware:
+
+NVIDIA RTX 4060 Laptop GPU
+8 GB VRAM
+
+Do NOT run multiple large training jobs simultaneously.
+
+Run experiments sequentially.
+
+Automatically release GPU memory between experiments.
+
+Use:
+
+torch.cuda.empty_cache()
+garbage collection
+CUDA synchronization
+
+Monitor:
+
+VRAM
+GPU utilization
+training time
+temperature
+
+Do not allow uncontrolled OOM failures.
+
+============================================================
+FINAL OUTPUT
+============================================================
+
+At the end print:
+
+============================================================
+FINAL RESEARCH EXPERIMENT SUMMARY
+============================================================
+
+1. Best overall detector
+2. Best small-object detector
+3. Fastest detector
+4. Best YOLO configuration
+5. Best input resolution
+6. Best augmentation strategy
+7. Best accuracy/speed tradeoff
+8. Best hybrid solution
+9. Main failure mode
+10. Recommended final deployment architecture
+
+Then print the complete final comparison table.
+
+IMPORTANT:
+
+Do NOT say "best" unless the experiment supports it.
+
+Use evidence from the validation/test metrics.
+
+START BY INSPECTING THE EXISTING PROJECT.
+
+Do not immediately train everything.
+
+First determine which utilities already exist and reuse them.
+
+Then execute the experiments sequentially.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-05T11:46:59+05:30.
+</ADDITIONAL_METADATA>
