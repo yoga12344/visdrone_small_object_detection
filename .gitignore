@@ -14,9 +14,9 @@ env/
 # Large model checkpoints (>100MB exceeds GitHub push limits)
 *.ckpt
 *.pth
-cv_hackathon/results/trained/faster_rcnn/weights/*.pt
-cv_hackathon/results/trained/mask_rcnn/weights/*.pt
-cv_hackathon/results/trained/rf_detr_nano/
+DL_Project/results/trained/faster_rcnn/weights/*.pt
+DL_Project/results/trained/mask_rcnn/weights/*.pt
+DL_Project/results/trained/rf_detr_nano/
 
 # Large ZIP archives (>100MB exceeds GitHub push limits)
 # Note: Uncompressed folders VISDRONE_ARTIFACTS_EXPORT/ and dataset/ are tracked directly

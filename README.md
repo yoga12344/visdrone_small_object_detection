@@ -94,7 +94,7 @@ visdrone_small_object_detection/
 │   ├── ARTIFACT_INVENTORY.md     # Detailed markdown catalog of all artifacts
 │   └── ARTIFACT_INVENTORY.csv    # Machine-readable inventory of all outputs
 │
-├── cv_hackathon/                 # Full research codebase & experimental testbed
+├── DL_Project/                    # Full research codebase & experimental testbed
 │   ├── configs/                  # Benchmark configurations
 │   ├── data/                     # Annotation parsers, split manifests & packages
 │   ├── evaluation/               # Metric modules & Hungarian matching
